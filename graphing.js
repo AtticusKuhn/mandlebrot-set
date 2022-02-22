@@ -22,6 +22,7 @@ const fragmentShaderText = () =>
             float dy = (${dy});
             float x = ((gl_FragCoord[0] /  float(${window.innerWidth})) - 0.5)*dx;
             float y =  ((gl_FragCoord[1]  / float(${window.innerHeight})) - 0.5)*dy;
+            bool colorMode = ${colorMode};
             float zx = 0.0;
             float zy = 0.0;
             float temp_x = zx;
@@ -32,12 +33,16 @@ const fragmentShaderText = () =>
                 zx = temp_x*temp_x - temp_y*temp_y + x;
                 zy = 2.0*temp_x*temp_y + y;
             };
-            gl_FragColor = vec4( 100.0*zx,100.0*zy, 150.0*zx*zy, 1);
-            // if(inMandlebrot(x,y)){
-            //     gl_FragColor = vec4(0.0 ,0.0, 0.0, 1);
-            // }else{
-            //     gl_FragColor = vec4(1.0, 1.0, 1.0, 0.0);
-            // }
+            if(colorMode){
+                gl_FragColor = vec4( 10.0*zx,10.0*zy, 10.0*zx*zy, 1);
+            }else{
+                bool inMandlebrot = (zx*zx + zy*zy) < 1.0;
+                if(inMandlebrot){
+                    gl_FragColor = vec4(0.0 ,0.0, 0.0, 1);
+                }else{
+                    gl_FragColor = vec4(1.0, 1.0, 1.0, 0.0);
+                }
+            }
         }`;
 
 var InitDemo = function () {
