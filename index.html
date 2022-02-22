@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandlebrot Set</title>
+
+</head>
+
+<body>
+    <!-- <div>Hello</div> -->
+    <h1>Mandlebrot set</h1>
+    <div>Discover mathmatmics in your own browser</div>
+    <!-- <input id="input" value="y=x*x"> -->
+    <input id="check" onclick="colorToggle()" type="checkbox">
+    <label>Toggle Color Mode</label>
+
+    <button onclick="zoomOut()">Zoom out (-)</button>
+    <button onclick="zoomIn()">Zoom in (+)</button>
+    <br>
+    <canvas id="canvas"></canvas>
+    <!-- <canvas id="canvas2"></canvas> -->
+
+    <!-- <div id="root"></div> -->
+    <!-- <img id="image" src="image.jpg"> -->
+
+    <script defer src="graphing.js"></script>
+</body>
+
+</html>
